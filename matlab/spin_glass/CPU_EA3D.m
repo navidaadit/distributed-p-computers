@@ -5,17 +5,21 @@
 % Graph-colored simulated annealing on a 3D Ising spin glass (EA model).
 % Linear inverse-temperature schedule; residual energy tracked vs time.
 % Live progress displays percent completion and gap-to-ground (%).
-% Press "run FPGA" to hand off to SA_FPGA_after_CPU.m for a timed FPGA run.
+% Press "run FPGA" to hand off to FPGA_EA3D.m for a timed FPGA run.
 % =========================================================================
 
 clc
 clearvars
 close all force
 
+% Ensure common helpers are on MATLAB path
+repo_root = fileparts(fileparts(mfilename('fullpath')));  % one level up from demo folder
+addpath(fullfile(repo_root, 'common'));
+
 % ================== USER KNOBS ==================
 instanceSize        = 37;
 instanceID          = 0;
-num_sweeps_SA       = 150;
+num_sweeps_SA       = 500;
 num_betas           = 10;                         % linear schedule stages
 sweeps_per_beta     = num_sweeps_SA/num_betas;
 initial_beta        = 0.5;
@@ -226,7 +230,7 @@ while ~hFig.UserData.runFPGA
     if ~ishandle(hFig); return; end
     pause(0.1);
 end
-SA_FPGA_after_CPU;   % Script executed next (reuses UI handles)
+FPGA_EA3D;   % Script executed next (reuses UI handles)
 
 % ================== HELPERS ==================
 function formattedString = formatFlips(flips)
