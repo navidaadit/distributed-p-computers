@@ -8,6 +8,10 @@
 % Can run immediately after the CPU demo (reusing its UI) or standalone.
 % =========================================================================
 
+% Ensure common helpers are on MATLAB path
+repo_root = fileparts(fileparts(mfilename('fullpath')));  % one level up from demo folder
+addpath(fullfile(repo_root, 'common'));
+
 %% Defaults when launched standalone (overridden if CPU script already set them)
 if ~exist('instanceSize','var'),    instanceSize    = 37;  end
 if ~exist('instanceID','var'),      instanceID      = 0;   end
