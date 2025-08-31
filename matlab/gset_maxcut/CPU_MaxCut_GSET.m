@@ -11,10 +11,14 @@ clc
 clearvars
 close all force
 
+% Ensure common helpers are on MATLAB path
+repo_root = fileparts(fileparts(mfilename('fullpath')));  % one level up from demo folder
+addpath(fullfile(repo_root, 'common'));
+
 % ================== USER KNOBS ==================
 gset_name          = 'G81';                 % expects '<name>.txt' in gset_dir
 gset_dir           = './GSET';              % folder containing GSET .txt
-num_sweeps_SA      = 250;                   % total sweeps
+num_sweeps_SA      = 500;                   % total sweeps
 num_betas          = 10;                    % linear schedule stages
 sweeps_per_beta    = max(1, floor(num_sweeps_SA/num_betas));
 initial_beta       = 0.5;
@@ -187,7 +191,7 @@ while ~hFig.UserData.runFPGA
     if ~ishandle(hFig); return; end
     pause(0.1);
 end
-SA_FPGA_after_CPU;   % FPGA script below in a separate file
+FPGA_MaxCut_GSET;   % FPGA script below in a separate file
 
 % ================== HELPERS ==================
 function formattedString = formatFlips(flips)

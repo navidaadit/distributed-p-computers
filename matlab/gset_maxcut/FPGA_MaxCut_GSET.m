@@ -6,6 +6,10 @@
 % Uses J = -W, h = -h from a GSET .txt file. Plots Cut Value vs wall time.
 % =========================================================================
 
+% Ensure common helpers are on MATLAB path
+repo_root = fileparts(fileparts(mfilename('fullpath')));  % one level up from demo folder
+addpath(fullfile(repo_root, 'common'));
+
 %% Defaults (overridden when launched from CPU script)
 if ~exist('gset_name','var'),       gset_name       = 'G81'; end
 if ~exist('gset_dir','var'),        gset_dir        = './GSET'; end
