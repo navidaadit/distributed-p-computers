@@ -1,0 +1,11 @@
+Find Location of AXI Manager IP
+This example uses:
+
+HDL Verifier Support Package for AMD FPGA and SoC Devices
+To find the folder in your MATLAB® installation that contains the AXI manager IP, call the setup function without a project file name.
+
+You can manually add ...
+C:\Program Files\MATLAB\R2022a\toolbox\hdlverifier\supportpackages ...
+\fpgadebug_xilinx\+hdlverifier\+fpga\+vivado ...
+to the IP search path setting of your Vivado project.
+To use the IP, add this path to your FPGA project.
