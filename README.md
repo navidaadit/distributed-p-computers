@@ -5,12 +5,14 @@
 
 <img src="images/distributed_PC.png" width="720" alt="Distributed p‑computers overview" />
 
-Probabilistic computing with p‑bits provides a scalable, room‑temperature path for hard optimization and ML workloads. Single‑FPGA p‑computers already outperform mainstream accelerators on several probabilistic tasks, but capacity is capped per device (~10k p‑bits on large FPGAs). This repository demonstrates a **distributed architecture** that partitions large graphs across multiple FPGAs and communicates **asynchronously** between subgraphs. In our demos, a **6‑FPGA** system reaches **50k p‑bits** and up to **~750 billion flips/s**, and the approach scales with additional boards or custom silicon.
+<img src="images/hybrid_PC.png" width="720" alt="Hybrid probabilistic–classical (AMD FPGA + AMD CPU)" />
+
+Probabilistic computing with p‑bits provides a scalable, room‑temperature path for hard optimization and ML workloads. Single‑FPGA p‑computers already outperform mainstream accelerators on several probabilistic tasks, but capacity is capped per device (~10k p‑bits on large FPGAs). This repository demonstrates a **distributed architecture** that partitions large graphs across multiple FPGAs and communicates **asynchronously** between subgraphs. In our demos, a **6‑FPGA** system reaches **50–60k p‑bits** and **up to ~900 billion flips/s**, and the approach scales with additional boards or custom silicon.
 
 ---
 
 ## Highlights
-- **Scale & performance.** Multi‑FPGA execution with ~10k p‑bits/FPGA; six boards reach the **50–60k p‑bit class** today with **hundreds of billions of flips/s** and clean growth with additional boards.
+- **Scale & performance.** Multi‑FPGA execution with ~10k p‑bits/FPGA; six boards reach the **50–60k p‑bit class** with **hundreds of billions of flips/s** and clean growth with additional boards.
 - **Implementation end‑to‑end.** MATLAB demos (CPU baselines + FPGA runs) with a unified UI, example bitstreams, and lean SystemVerilog RTL for the core p‑computer micro‑architecture.  
 - **Innovation & scalability.** Asynchronous, error‑tolerant updates enable high throughput and natural scaling from a handful of FPGAs to larger farms or ASIC/sMTJ p‑computers.  
 - **Algorithms & partitioning.** Supports **KaHIP/METIS** and a **probabilistic Potts‑style cut** that can be **distance‑aware** to penalize long inter‑FPGA cuts; keeps cross‑partition traffic small.
@@ -21,7 +23,8 @@ Probabilistic computing with p‑bits provides a scalable, room‑temperature pa
 ## Repository Structure (short)
 - `matlab/` – MATLAB demos for **Spin Glass** and **GSET Max‑Cut** (CPU+FPGA)
 - `hardware/rtl_example/` – core SystemVerilog modules actually used in the demos
-- `hardware/constraint_example/` – One example XDC is provided under constraints_example/ to illustrate pin assignments.
+- `hardware/constraints_example/` – one example XDC for pin assignments
+- `hardware/BD_example/` – minimal Vivado block design export (`bd_export.tcl`, wrapper, and a short note)
 - `bitstreams/` – example ready‑to‑flash images (per‑FPGA) for both demos
 - `report/` – project report (PDF)
 - `images/` – figures used in README 
@@ -39,7 +42,7 @@ Probabilistic computing with p‑bits provides a scalable, room‑temperature pa
 - **Six VCU118** FPGA boards (tested) on the same network (examples assume static IPs `192.168.0.{1..6}`; adjust in code if different)
 - **Five FMC and FMC+ cables**
 
-> Pre‑computed **color maps**, **ground energies**, and **partitions** (KaHIP/METIS/Potts) are included for the provided instances.
+> **Color maps**, **ground energies**, and **partitions** (KaHIP/METIS/Potts) are included for the provided instances.
 
 ---
 
@@ -72,11 +75,10 @@ Both demos follow the same flow: open the CPU script → click **run CPU** → c
 3. Click **run FPGA** to start the FPGA run.
 
 **Files (subset)**  
-- `matlab/gset_maxcut/GSET/G81.txt` – instance  
+- `matlab/gset_maxcut/GSET/G81.txt` – instance 
 - `matlab/gset_maxcut/colorMap/G81_colorMap.mat` – color map  
 - `matlab/gset_maxcut/optimal_partitions/optimal_metis_partitions_G81_6parts.mat` – partitions  
 - `matlab/common/*.m` – shared helpers
-
 
 ---
 
@@ -112,14 +114,24 @@ hardware/rtl_example/
 ├─ unpack_pbits.sv
 └─ pbits_FPGA3.txt        // example p‑bit instantiation list consumed by top.sv
 ```
-- Example constraints: `hardware/constraints_example/constraints.xdc` (example board FPGA3).
+- Example constraint: `hardware/constraints_example/constraints.xdc`
+
+---
+
+## Block Design (optional)
+`hardware/BD_example/` contains a minimal export for portability:
+- `bd_export.tcl` – Vivado block design TCL
+- `BRAM_write_regs_wrapper.vhd` – small wrapper used in the BD
+- `MATLAB_IP_note.txt` – short note on the MATLAB AXI Manager IP
+
+This folder is illustrative; it is not required to use the provided bitstreams.
 
 ---
 
 ## Reuse
 - **MATLAB side:** Change instances, load color maps, and partitions to explore different problems and sizes.  
 - **RTL side:** The modules are generic building blocks for probabilistic computing and can be adapted to other fabrics or loaders.  
-- **Scaling:** ~10k p‑bits/FPGA today; ~60k on six boards; architecture extends naturally to industry-scale.
+- **Scaling:** ~10k p‑bits/FPGA today; ~60k on six boards; architecture extends naturally to industry‑scale.
 
 ---
 
