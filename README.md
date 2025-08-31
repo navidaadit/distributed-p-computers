@@ -21,7 +21,7 @@ Probabilistic computing with p‑bits provides a scalable, room‑temperature pa
 ## Repository Structure (short)
 - `matlab/` – MATLAB demos for **Spin Glass** and **GSET Max‑Cut** (CPU+FPGA)
 - `hardware/rtl_example/` – core SystemVerilog modules actually used in the demos
-- `hardware/constraints/` – one example XDC
+- `hardware/constraint_example/` – One example XDC is provided under constraints_example/ to illustrate pin assignments.
 - `bitstreams/` – example ready‑to‑flash images (per‑FPGA) for both demos
 - `report/` – project report (PDF)
 - `images/` – figures used in README 
@@ -112,7 +112,7 @@ hardware/rtl_example/
 ├─ unpack_pbits.sv
 └─ pbits_FPGA3.txt        // example p‑bit instantiation list consumed by top.sv
 ```
-- Example constraints: `hardware/constraints/constraints.xdc` (example board FPGA3).
+- Example constraints: `hardware/constraints_example/constraints.xdc` (example board FPGA3).
 
 ---
 
