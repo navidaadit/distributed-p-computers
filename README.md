@@ -25,7 +25,7 @@ Probabilistic computing with p‑bits provides a scalable, room‑temperature pa
 
 ---
 
-## Repository Structure (short)
+## Repository Structure 
 - `matlab/` – MATLAB demos for **Spin Glass** and **GSET Max‑Cut** (CPU+FPGA)
 - `hardware/rtl_example/` – core SystemVerilog modules actually used in the demos
 - `hardware/constraints_example/` – one example XDC for pin assignments
