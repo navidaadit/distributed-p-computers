@@ -3,9 +3,14 @@
 **Authors:** Navid Anjum Aadit, Kerem Y. Camsari  
 **Affiliation:** Department of Electrical & Computer Engineering, University of California, Santa Barbara, CA 93106, USA
 
-<img src="images/distributed_PC.png" width="720" alt="Distributed p‑computers overview" />
+<p align="center">
+  <img src="images/distributed_PC.png" width="720" alt="Distributed p-computers overview" />
+</p>
 
-<img src="images/hybrid_PC.png" width="720" alt="Hybrid probabilistic–classical (AMD FPGA + AMD CPU)" />
+<p align="center">
+  <img src="images/hybrid_PC.png" width="720" alt="Hybrid probabilistic–classical (AMD FPGA + AMD CPU)" />
+</p>
+
 
 Probabilistic computing with p‑bits provides a scalable, room‑temperature path for hard optimization and ML workloads. Single‑FPGA p‑computers already outperform mainstream accelerators on several probabilistic tasks, but capacity is capped per device (~10k p‑bits on large FPGAs). This repository demonstrates a **distributed architecture** that partitions large graphs across multiple FPGAs and communicates **asynchronously** between subgraphs. In our demos, a **6‑FPGA** system reaches **50–60k p‑bits** and **up to ~900 billion flips/s**, and the approach scales with additional boards or custom silicon.
 
