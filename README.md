@@ -1,4 +1,4 @@
-# Towards Extreme‑Scale Ising Machines with Distributed p‑Computers
+# Towards Extreme‑Scale Ising Machines with Distributed p‑computers
 
 **Authors:** Navid Anjum Aadit, Kerem Y. Camsari  
 **Affiliation:** Department of Electrical & Computer Engineering, University of California, Santa Barbara, CA 93106, USA
