@@ -173,7 +173,7 @@ if needCompute
         'partition_J_indices','partition_pbit_indices','part_pbits','num_partitions');
 end
 
-%% == CLOCKS: restored to your original pattern ==
+%% == CLOCKS ==
 original_freq = 15e6;
 divider_factor = 0 ;
 comm_divider_factor = 0;
@@ -454,3 +454,4 @@ j = [cols(offDiagMask); rows(offDiagMask)];
 v = [vals(offDiagMask); vals(offDiagMask)];
 W = sparse(i, j, v, n, n);
 end
+
