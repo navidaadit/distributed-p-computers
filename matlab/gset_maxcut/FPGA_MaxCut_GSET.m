@@ -33,7 +33,7 @@ if needNewUI
 
     % Left image
     hSubplot1 = subplot(1,2,1);
-    imgPathFPGA = './images/distributed_FPGA.png';
+    imgPathFPGA = './images/distributed_PC.png';
     if exist(imgPathFPGA,'file'), imshow(imgPathFPGA);
     else, imshow(ones(100,100)); text(0.05,0.5,'(FPGA slide missing)','Units','normalized','FontSize',fontBig,'FontWeight','bold','Color','k'); end
     set(hSubplot1,'Position',[0.01, 0.1, 0.45, 0.85]);
@@ -454,4 +454,5 @@ j = [cols(offDiagMask); rows(offDiagMask)];
 v = [vals(offDiagMask); vals(offDiagMask)];
 W = sparse(i, j, v, n, n);
 end
+
 
