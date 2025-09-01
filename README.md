@@ -123,7 +123,7 @@ hardware/rtl_example/
 
 ---
 
-## Block Design (optional)
+## Block Design 
 `hardware/BD_example/` contains a minimal export for portability:
 - `bd_export.tcl` – Vivado block design TCL
 - `BRAM_write_regs_wrapper.vhd` – small wrapper used in the BD
